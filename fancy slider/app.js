@@ -68,6 +68,11 @@ const createSlider = () => {
   // hide image aria
   imagesArea.style.display = 'none';
   const duration = document.getElementById('duration').value || 1000;
+  if (duration < 0) {
+    alert('please put a positive value more than 1000'); //tahole 0 er kom hole alert dibe but ok korlei abr ager moto lafabe;
+    // tai return kore dbo
+    return;
+  }
   sliders.forEach(slide => {
     let item = document.createElement('div')
     item.className = "slider-item";
