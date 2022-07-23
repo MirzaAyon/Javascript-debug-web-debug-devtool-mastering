@@ -1,3 +1,4 @@
+// console.log('hello from devTool source tab')
 function updateProductNumber(product, price, isIncreasing) {
     const productInput = document.getElementById(product + '-number');
     let productNumber = productInput.value;

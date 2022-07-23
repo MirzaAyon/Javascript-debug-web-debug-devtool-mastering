@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>countries</title>
+    <style>
+        .country {
+            border: 2px solid tomato;
+            margin: 10px;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        #countries {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <h3>Country Details</h3>
+        <div id="country-detail">
+
+        </div>
+    </section>
+    <h1>Countries</h1>
+    <div id="countries">
+
+
+    </div>
+    <script>
+        const loadCountries = () => {
+            fetch('https://restcountries.com/v3.1/all')
+                .then(res => res.json())
+                .then(data => displayCountries(data));
+        }
+        loadCountries();
+        const displayCountries = countries => {
+
+            const countriesDiv = document.getElementById('countries');
+            countries.forEach(country => {
+                // console.log(country);
+                const div = document.createElement('div');
+                div.classList.add('country');
+                div.innerHTML = `
+                <h3>${country.name}</h3>
+                <p>${country.capital}</p>
+                <button onclick = "loadCountryByName('${country.name}')">Details </button>
+                `;
+                countriesDiv.appendChild(div);
+            });
+        }
+
+        const loadCountryByName = name => {
+            const url = `https://restcountries.eu/rest/v2/name/${name}`;
+            //name ke dynamic way te boshate hbe next page
+            // console.log(url)
+            fetch(url)
+                .then(res => res.json())
+                .then(data => console.log(data[0]))
+        }
+        const displayCountryDetail = country => {
+            console.log(country);
+            const countryDiv = document.getElementById('country-detail')
+            countryDiv.innerHTML =
+                `
+            <h5> ${country.name} </h5>
+            <p> population : ${country.population} </p>
+            <img width = "200px" src="${country.flag}" alt="">
+            `
+
+        }//eta thik thak moto run hbe na karon uri te problem
+        //eta phero er uri
+
+    </script>
+
+</body>
+
+</html>
