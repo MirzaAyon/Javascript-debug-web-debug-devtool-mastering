@@ -21,4 +21,5 @@
 //code e vs e giye control + g dile 70 no line show hbe
 //code e kichu edit krbo
 //if else dibo and return krbo
-//code ta full bujhbo eta imp
+//code ta full bujhbo eta imp*******************
+//
